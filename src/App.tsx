@@ -1,26 +1,33 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import Header from './Header';
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Container from 'react-bootstrap/Container'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
+
+class App extends React.Component {
+  public render() {
+    return (
+      <Container className="p-3">
+        <Row>
+          <Col>
+          <ul className="list-group">
+            <li className="list-group-item list-group-item-action active">Cras justo odio</li>
+            <li className="list-group-item list-group-item-action">Dapibus ac facilisis in</li>
+            <li className="list-group-item list-group-item-action">Morbi leo risus</li>
+            <li className="list-group-item list-group-item-action">Porta ac consectetur ac</li>
+            <li className="list-group-item list-group-item-action">Vestibulum at eros</li>
+          </ul>
+          </Col>
+          <Col>
+              <img src={logo} className="App-logo" alt="logo" />
+              <Header name="REACT" />
+          </Col>
+        </Row>
+      </Container>
+    );
+  }
 }
 
 export default App;
