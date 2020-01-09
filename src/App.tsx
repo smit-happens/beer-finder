@@ -1,31 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import Header from './Header';
+import GoogleMap from 'google-map-react';
 
-import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
+import BreweryListItem from './view/BreweryListItem';
 
 class App extends React.Component {
+  static defaultProps = {
+    center: {
+      lat: 39.945480,
+      lng: -76.728690
+    },
+    zoom: 11
+  };
+
+  // constructor(props:any) {
+  //   super(props);
+
+  // }
+  
   public render() {
     return (
-      <Container className="p-3">
-        <Row>
-          <Col>
-          <ul className="list-group">
-            <li className="list-group-item list-group-item-action active">Cras justo odio</li>
-            <li className="list-group-item list-group-item-action">Dapibus ac facilisis in</li>
-            <li className="list-group-item list-group-item-action">Morbi leo risus</li>
-            <li className="list-group-item list-group-item-action">Porta ac consectetur ac</li>
-            <li className="list-group-item list-group-item-action">Vestibulum at eros</li>
-          </ul>
-          </Col>
-          <Col>
-              <img src={logo} className="App-logo" alt="logo" />
-              <Header name="REACT" />
-          </Col>
-        </Row>
-      </Container>
+      <div className="container p-3">
+        <div className="row">
+          <div className="col col-md-4">
+            <BreweryListItem/>
+          </div>
+          <div className="col">
+            <GoogleMap
+              bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY! }}
+              defaultCenter={App.defaultProps.center}
+              defaultZoom={11}
+            >
+            </GoogleMap>
+          </div>
+        </div>
+      </div>
     );
   }
 }
