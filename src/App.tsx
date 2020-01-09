@@ -1,7 +1,7 @@
 import React from 'react';
 import GoogleMap from 'google-map-react';
 
-import BreweryListItem from './view/BreweryListItem';
+import BreweryList from './view/BreweryList';
 
 class App extends React.Component {
   static defaultProps = {
@@ -22,7 +22,7 @@ class App extends React.Component {
       <div className="container p-3">
         <div className="row">
           <div className="col col-md-4">
-            <BreweryListItem/>
+            <BreweryList/>
           </div>
           <div className="col">
             <GoogleMap
