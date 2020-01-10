@@ -12,6 +12,7 @@
     "@types/node": "^12.12.24",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
+    "@types/react-leaflet": "^2.5.0",
     "bootstrap": "^4.4.1",
     "google-map-react": "^1.1.5",
     "jquery": "^3.4.0",
@@ -45,8 +46,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@types/google-map-react": "^1.1.3",
-    "@types/react-leaflet": "^2.5.0"
-  }
+  "devDependencies": {}
 }
