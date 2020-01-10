@@ -20,7 +20,7 @@ export default class BreweryList extends React.Component<Props, State> {
     }
 
     render() {
-        let listItems = this.state.breweries.map(
+        let listItems = this.state.breweries.map(  //TODO: set brewery results to fill out the list items
             brewery => (
                 <BreweryListItem 
                     brewery = {brewery} 
@@ -28,20 +28,25 @@ export default class BreweryList extends React.Component<Props, State> {
                 />
             )
         );
+        //TODO: add check for length zero
 
         return (
-            <ul className="list-group">
-                <li className="list-group-item list-group-item-action active">Cras justo odio</li>
-                <li className="list-group-item list-group-item-action">Dapibus ac facilisis in</li>
-                <li className="list-group-item list-group-item-action">Morbi leo risus</li>
-                <li className="list-group-item list-group-item-action">Porta ac consectetur ac</li>
-                <li className="list-group-item list-group-item-action">Vestibulum at eros</li>
-                <li className="list-group-item list-group-item-action">Vestibulum at eros</li>
-                <li className="list-group-item list-group-item-action">Vestibulum at eros</li>
-                <li className="list-group-item list-group-item-action">Vestibulum at eros</li>
-                <li className="list-group-item list-group-item-action">Vestibulum at eros</li>
-                <li className="list-group-item list-group-item-action">Vestibulum at eros</li>
-            </ul>
+
+            <div className="container-fluid">
+                {listItems}
+                <ul className="list-group">
+                    <li className="list-group-item list-group-item-action active">Great Beer here</li>
+                    <li className="list-group-item list-group-item-action">Beers R Us</li>
+                    <li className="list-group-item list-group-item-action">Morbi leo risus</li>
+                    <li className="list-group-item list-group-item-action">Porta ac consectetur ac</li>
+                    <li className="list-group-item list-group-item-action">Vestibulum at eros</li>
+                    <li className="list-group-item list-group-item-action">Vestibulum at eros</li>
+                    <li className="list-group-item list-group-item-action">Vestibulum at eros</li>
+                    <li className="list-group-item list-group-item-action">Vestibulum at eros</li>
+                    <li className="list-group-item list-group-item-action">Vestibulum at eros</li>
+                    <li className="list-group-item list-group-item-action">Vestibulum at eros</li>
+                </ul>
+            </div>
         )
     }
 }
