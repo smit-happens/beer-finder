@@ -9,6 +9,7 @@ export default class BreweryListItem extends React.Component<Props> {
 
     render() {
         const brewery = this.props.brewery;
+        console.log(brewery);
         return (
             <div>This is a brewrey</div>
         )

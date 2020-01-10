@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from "react-helmet";
 
 import MapPortal from "./view/MapPortal";
 import BreweryList from './view/BreweryList';
@@ -11,9 +10,6 @@ class App extends React.Component {
   public render() {
     return (
       <div>
-        <Helmet>
-          <title>Turbo Team!</title>
-        </Helmet>
         <div className="container p-3">
           <div className="row">
             <div className="col col-md-4">
