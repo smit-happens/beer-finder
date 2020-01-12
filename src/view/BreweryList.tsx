@@ -2,6 +2,7 @@ import React from 'react';
 import BreweryListItem from "./BreweryListItem";
 import Brewery from '../models/Brewery';
 import { BreweryApi } from '../models/BreweryApi';
+import "./BreweryList.scss";
 
 
 interface Props {
@@ -22,11 +23,10 @@ export default class BreweryList extends React.Component<Props> {
                 />
             )
         );
-        //TODO: add check for length zero
 
         return (
 
-            <div className="container-fluid">
+            <div className="container-fluid brewery-list">
                 <ul className="list-group">
                 {listItems}
                 </ul>

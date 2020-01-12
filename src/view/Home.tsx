@@ -22,12 +22,12 @@ export default class Home extends React.Component<null, State> {
 
     public render(): JSX.Element {
         return (
-            <div className="container p-3">
+        <div className="container-fluid">
           <div className="row">
             <div className="col col-md-4">
               <BreweryList breweries={this.state.breweries} />
             </div>
-            <div className="col">
+            <div className="col col-md-8">
               <MapPortal breweries={this.state.breweries}/>
             </div>
           </div>

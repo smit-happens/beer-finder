@@ -7,6 +7,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes } from './Routes';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
+import "./App.scss";
+
 
 class App extends React.Component { 
   public render() {

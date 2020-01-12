@@ -1,8 +1,9 @@
 import React from 'react';
 import "./MapPortal.scss";
-import { Map, TileLayer } from "react-leaflet";
+import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import Brewery from "../models/Brewery";
 import { RouteComponentProps, withRouter } from 'react-router';
+import { LatLngExpression, LatLngLiteral, LatLngBoundsExpression, LatLngBoundsLiteral } from 'leaflet';
 
 
 interface UrlParams {
@@ -14,11 +15,18 @@ interface Props extends RouteComponentProps<UrlParams> {
 }
 
 class MapPortalComponent extends React.Component<Props> {
+    private _leafletMarker: Marker | null = null;
+
     constructor(props: Props) {
         super(props);
         this._getActiveBrewery = this._getActiveBrewery.bind(this);
     }
 
+    public componentDidUpdate(): void {
+        if (this._leafletMarker != null) {
+            this._leafletMarker.leafletElement.openPopup();
+        }
+    }
 
     public render(): JSX.Element {
         const brewery = this._getActiveBrewery();
@@ -28,14 +36,14 @@ class MapPortalComponent extends React.Component<Props> {
                 lat: 39.945480,
                 lng: -76.728690
               },
-              zoom: 11
+              zoom: 12
         };
 
         //check for no selection
         if(brewery != null) {
             point.center = {
-                lat: Number(brewery.latitude),
-                lng: Number(brewery.longitude)
+                lat: +brewery.latitude,
+                lng: +brewery.longitude
             }
         }
 
@@ -48,6 +56,22 @@ class MapPortalComponent extends React.Component<Props> {
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url='https://{s}.tile.osm.org/{z}/{x}/{y}.png'
                 />
+                <Marker position={point.center} ref={(marker: Marker) => this._leafletMarker = marker}>
+                    {
+                        brewery &&
+                        <Popup>
+                            <div>{brewery.name}</div>
+                            <div>{brewery.street} {brewery.city}</div>
+                            <div>{brewery.state} {brewery.postal_code}</div>
+                            {
+                                brewery.website_url && brewery.website_url != "" &&
+                                <a href={brewery.website_url} target="_blank">{brewery.website_url}</a>
+                            }
+                        </Popup>
+                    }
+                </Marker>
+
+
             </Map>
         )
     }
