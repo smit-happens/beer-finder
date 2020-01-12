@@ -3,7 +3,6 @@ import "./MapPortal.scss";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import Brewery from "../models/Brewery";
 import { RouteComponentProps, withRouter } from 'react-router';
-import { LatLngExpression, LatLngLiteral, LatLngBoundsExpression, LatLngBoundsLiteral } from 'leaflet';
 
 
 interface UrlParams {
@@ -42,8 +41,8 @@ class MapPortalComponent extends React.Component<Props> {
         //check for no selection
         if(brewery != null) {
             point.center = {
-                lat: +brewery.latitude,
-                lng: +brewery.longitude
+                lat: Number(brewery.latitude),
+                lng: Number(brewery.longitude)
             }
         }
 
@@ -64,8 +63,8 @@ class MapPortalComponent extends React.Component<Props> {
                             <div>{brewery.street} {brewery.city}</div>
                             <div>{brewery.state} {brewery.postal_code}</div>
                             {
-                                brewery.website_url && brewery.website_url != "" &&
-                                <a href={brewery.website_url} target="_blank">{brewery.website_url}</a>
+                                brewery.website_url && brewery.website_url !== "" &&
+                                <a href={brewery.website_url} target="_blank" rel="noopener noreferrer">{brewery.website_url}</a>
                             }
                         </Popup>
                     }
@@ -79,7 +78,7 @@ class MapPortalComponent extends React.Component<Props> {
     private _getActiveBrewery(): Brewery | undefined {
         const idString = this.props.match.params.id;    //checking URL prarms
 
-        if (idString == null || idString == "") {
+        if (idString == null || idString === "") {
             if (this.props.breweries == null || this.props.breweries.length === 0) {
                 return undefined;
             }

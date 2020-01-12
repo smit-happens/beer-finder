@@ -1,7 +1,7 @@
 import React from 'react';
 import BreweryListItem from "./BreweryListItem";
 import Brewery from '../models/Brewery';
-import { BreweryApi } from '../models/BreweryApi';
+// import { BreweryApi } from '../models/BreweryApi';
 import "./BreweryList.scss";
 
 
@@ -10,12 +10,8 @@ interface Props {
 }
 
 export default class BreweryList extends React.Component<Props> {
-    constructor(props: Props) {
-        super(props);
-    }
-
-    public render(): JSX.Element {
-        const listItems = this.props.breweries.map(  //TODO: set brewery results to fill out the list items
+public render(): JSX.Element {
+        const listItems = this.props.breweries.map(  //set brewery results to fill out the list items
             (brewery: Brewery) => (
                 <BreweryListItem 
                     brewery = {brewery} 

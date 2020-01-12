@@ -1,12 +1,7 @@
 import React from 'react';
-
-import MapPortal from "./view/MapPortal";
-import BreweryList from './view/BreweryList';
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes } from './Routes';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-
 import "./App.scss";
 
 

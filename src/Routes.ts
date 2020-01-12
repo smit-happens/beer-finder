@@ -1,6 +1,4 @@
-import BreweryList from "./view/BreweryList";
 import { RouteComponentProps } from "react-router";
-import BreweryListItem from "./view/BreweryListItem";
 import Home from "./view/Home"; 
 
 
