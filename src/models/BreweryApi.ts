@@ -1,28 +1,29 @@
 import Brewery from "./Brewery";
 
 const url = function (options: string): string {
-    return "https://api.openbrewerydb.org/breweries{$options}";
+    return `https://api.openbrewerydb.org/breweries${options}`;
 };
 
-function handleErrors(response: any) {
+//returns multiple breweries
+const index = async function(options: string = ""): Promise<Array<Brewery>> {
+    const response = await fetch(url(options));
     if (!response.ok) {
         throw Error(response.statusText);
     }
-    return response;
+    return (await response.json()) as Array<Brewery>;
 };
 
-const get = function(options: string): Promise<Brewery> {
-    return new Promise((resolve, reject) => {
-        fetch(url(options))
-            .then(handleErrors)
-            .then(response => resolve(response))
-            .catch(error => console.log(error, reject));    //logging for testing
-    })
-};
-
-
-export default {
-    getSingle(breweryId: string): Promise<Brewery> {
-        return get("/{$breweryId}")
+//returns single brewery
+const get = async function(id: number): Promise<Brewery> {
+    const response = await fetch(url(`/${id}`));
+    if (!response.ok) {
+        throw Error(response.statusText);
     }
+    return (await response.json()) as Brewery;
+};
+
+//Ex: BreweryApi.index()
+export const BreweryApi = {
+    index,
+    get,
 };
