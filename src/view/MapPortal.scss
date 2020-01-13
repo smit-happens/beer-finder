@@ -1,8 +1,13 @@
 @import url(https://unpkg.com/leaflet@1.6.0/dist/leaflet.css);
-
+@import "../variables";
 
 .leaflet-container {
-    height: 100vh;
+    height: calc(100vh - #{$header-height} - #{$header-offset});
     width: 100%;
     margin: 0 auto;
+
+    .no-map-available {
+      color: #7d7d7d;
+      font-style: italic;
+    }
   }
