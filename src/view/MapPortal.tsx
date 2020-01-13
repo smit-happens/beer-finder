@@ -14,21 +14,19 @@ interface Props extends RouteComponentProps<UrlParams> {
 }
 
 class MapPortalComponent extends React.Component<Props> {
-    private _leafletMarker: Marker | null = null;
-
     constructor(props: Props) {
         super(props);
-        this._getActiveBrewery = this._getActiveBrewery.bind(this);
+        this.getActiveBrewery = this.getActiveBrewery.bind(this);
     }
 
     public componentDidUpdate(): void {
-        if (this._leafletMarker != null) {
-            this._leafletMarker.leafletElement.openPopup();
+        if (this.leafletMarker != null) {
+            this.leafletMarker.leafletElement.openPopup();
         }
     }
 
     public render(): JSX.Element {
-        const brewery = this._getActiveBrewery();
+        const brewery = this.getActiveBrewery();
 
         const point = {
             center: {
@@ -46,8 +44,6 @@ class MapPortalComponent extends React.Component<Props> {
             }
         }
 
-        console.log(brewery);
-
         return (
             <Map 
                 center={point.center}
@@ -57,7 +53,7 @@ class MapPortalComponent extends React.Component<Props> {
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url='https://{s}.tile.osm.org/{z}/{x}/{y}.png'
                 />
-                <Marker position={point.center} ref={(marker: Marker) => this._leafletMarker = marker}>
+                <Marker position={point.center} ref={(marker: Marker) => this.leafletMarker = marker}>
                     {
                         brewery &&
                         <Popup>
@@ -79,13 +75,13 @@ class MapPortalComponent extends React.Component<Props> {
                         </Popup>
                     }
                 </Marker>
-
-
             </Map>
         )
     }
 
-    private _getActiveBrewery(): Brewery | undefined {
+    private leafletMarker: Marker | null = null;
+
+    private getActiveBrewery(): Brewery | undefined {
         const idString = this.props.match.params.id;    //checking URL prarms
 
         if (idString == null || idString === "") {

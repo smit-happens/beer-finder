@@ -11,14 +11,13 @@ interface State {
 }
 
 export default class Home extends React.Component<null, State> {
-
     constructor(props: any) {
         super(props);
         this.state = {
             breweries: [],
             search: "",
         };
-        this._onSearchChanged = this._onSearchChanged.bind(this);
+        this.onSearchChanged = this.onSearchChanged.bind(this);
     }
 
     //only happens when component mounts (once)
@@ -31,13 +30,12 @@ export default class Home extends React.Component<null, State> {
         if (this.state.search !== prevState.search) {
             this.setState({ breweries: await BreweryApi.index(this.state.search) });
         }
-        
     }
 
     public render(): JSX.Element {
         return (
             <div className="container-fluid">
-                <SearchBar searchText={this.state.search} onSearchTextChanged={this._onSearchChanged}/>
+                <SearchBar searchText={this.state.search} onSearchTextChanged={this.onSearchChanged}/>
                 <div className="row">
                     <div className="col col-md-4">
                         <BreweryList breweries={this.state.breweries} />
@@ -50,8 +48,7 @@ export default class Home extends React.Component<null, State> {
         );
     }
 
-
-    private _onSearchChanged(value: string): void {
+    private onSearchChanged(value: string): void {
         this.setState({ search: value });
     }
 }

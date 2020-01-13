@@ -10,7 +10,7 @@ interface Props {
 export default class SearchBar extends React.Component<Props> {
     constructor(props: Props) {
         super(props);
-        this._onSearchTextChanged = this._onSearchTextChanged.bind(this);
+        this.onSearchTextChanged = this.onSearchTextChanged.bind(this);
     }
 
     public render(): JSX.Element {
@@ -20,7 +20,7 @@ export default class SearchBar extends React.Component<Props> {
                     <form className="form-inline mr-auto">
                         <div className="md-form my-0">
                             <input className="form-control" type="text" placeholder="Search" aria-label="Search" 
-                                value={this.props.searchText} onChange={this._onSearchTextChanged}/>
+                                value={this.props.searchText} onChange={this.onSearchTextChanged}/>
                             <i className="fas fa-search text-white ml-3" aria-hidden="true"></i>
                         </div>
                     </form>
@@ -32,7 +32,7 @@ export default class SearchBar extends React.Component<Props> {
         )
     }
 
-    private _onSearchTextChanged(e: React.FormEvent<HTMLInputElement>): void {
+    private onSearchTextChanged(e: React.FormEvent<HTMLInputElement>): void {
         e.preventDefault();
         this.props.onSearchTextChanged(e.currentTarget.value);
     }

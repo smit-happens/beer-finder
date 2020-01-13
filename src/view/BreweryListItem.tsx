@@ -1,6 +1,6 @@
 import React from 'react';
 import Brewery from '../models/Brewery'
-import { RouteComponentProps, withRouter } from 'react-router';
+import { RouteComponentProps, withRouter } from "react-router";
 
 interface UrlParams {
     id: string;
@@ -14,20 +14,21 @@ class BreweryListItemComponent extends React.Component<Props> {
 
     constructor(props: Props) {
         super(props);
-        this._goToBrewery = this._goToBrewery.bind(this);   //binds the "this" of _gotobrewery to the component
+        this.goToBrewery = this.goToBrewery.bind(this);   //binds the "this" of gotobrewery to the component
     }
 
     public render(): JSX.Element {
         const brewery = this.props.brewery;
         const isSelected = this.props.brewery.id.toString() === this.props.match.params.id;
         return (
-            <li className={`list-group-item list-group-item-action" ${isSelected ? "active" : ""}`} onClick={this._goToBrewery}>
-                {brewery.name}
+            <li className={`list-group-item list-group-item-action" ${isSelected ? "active" : ""}`} onClick={this.goToBrewery}>
+                <h5>{brewery.name}</h5>
+                <div>{brewery.city}, {brewery.state}</div>
             </li>
         )
     }
 
-    private _goToBrewery(): void {
+    private goToBrewery(): void {
         this.props.history.push(`/${this.props.brewery.id}`);
     }
 }

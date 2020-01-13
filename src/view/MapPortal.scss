@@ -2,12 +2,12 @@
 @import "../variables";
 
 .leaflet-container {
-    height: calc(100vh - #{$header-height} - #{$header-offset});
-    width: 100%;
-    margin: 0 auto;
+  height: calc(100vh - #{$header-height} - #{$header-offset});
+  width: 100%;
+  margin: 0 auto;
 
-    .no-map-available {
-      color: #7d7d7d;
-      font-style: italic;
-    }
+  .no-map-available {
+    color: #7d7d7d;
+    font-style: italic;
   }
+}
