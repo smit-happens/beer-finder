@@ -46,6 +46,8 @@ class MapPortalComponent extends React.Component<Props> {
             }
         }
 
+        console.log(brewery);
+
         return (
             <Map 
                 center={point.center}
@@ -60,11 +62,19 @@ class MapPortalComponent extends React.Component<Props> {
                         brewery &&
                         <Popup>
                             <div>{brewery.name}</div>
+                            <div><span role="img" aria-label="telephone">☎️</span>: {brewery.phone}</div>
                             <div>{brewery.street} {brewery.city}</div>
                             <div>{brewery.state} {brewery.postal_code}</div>
                             {
                                 brewery.website_url && brewery.website_url !== "" &&
                                 <a href={brewery.website_url} target="_blank" rel="noopener noreferrer">{brewery.website_url}</a>
+                            }
+                            {
+                                (brewery.latitude == null || brewery.latitude === "" || brewery.longitude == null || brewery.longitude === "") &&
+                                <React.Fragment>
+                                    <br/>
+                                    <span className="no-map-available">Location Not Available</span>
+                                </React.Fragment>
                             }
                         </Popup>
                     }

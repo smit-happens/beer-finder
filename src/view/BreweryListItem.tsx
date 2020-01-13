@@ -10,8 +10,6 @@ interface Props extends RouteComponentProps<UrlParams> {
     brewery: Brewery
 }
 
-//check item id with URL id for active item
-
 class BreweryListItemComponent extends React.Component<Props> {
 
     constructor(props: Props) {
@@ -24,7 +22,7 @@ class BreweryListItemComponent extends React.Component<Props> {
         const isSelected = this.props.brewery.id.toString() === this.props.match.params.id;
         return (
             <li className={`list-group-item list-group-item-action" ${isSelected ? "active" : ""}`} onClick={this._goToBrewery}>
-                {brewery.name} {brewery.phone}
+                {brewery.name}
             </li>
         )
     }

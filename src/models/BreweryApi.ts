@@ -5,7 +5,11 @@ const url = function (options: string): string {
 };
 
 //returns multiple breweries
-const index = async function(options: string = ""): Promise<Array<Brewery>> {
+const index = async function(searchText: string = ""): Promise<Array<Brewery>> {
+    let options = "";
+    if (searchText !== "") {
+        options = `?by_name=${searchText}`;
+    }
     const response = await fetch(url(options));
     if (!response.ok) {
         throw Error(response.statusText);
