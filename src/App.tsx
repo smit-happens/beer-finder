@@ -8,7 +8,7 @@ import "./App.scss";
 class App extends React.Component { 
   public render() {
     return (
-      <div>
+      <div className="bg">
         <Router>
           <Route {...Routes.home}/>
           <Route {...Routes.brewery}/>

@@ -62,6 +62,7 @@ class MapPortalComponent extends React.Component<Props> {
                         brewery &&
                         <Popup>
                             <div>{brewery.name}</div>
+                            <div><span role="img" aria-label="telephone">☎️</span>: {brewery.phone}</div>
                             <div>{brewery.street} {brewery.city}</div>
                             <div>{brewery.state} {brewery.postal_code}</div>
                             {

@@ -19,13 +19,14 @@ export default class SearchBar extends React.Component<Props> {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <form className="form-inline mr-auto">
                         <div className="md-form my-0">
-                            <input className="form-control" type="text" placeholder="Search" aria-label="Search" value={this.props.searchText} onChange={this._onSearchTextChanged}/>
+                            <input className="form-control" type="text" placeholder="Search" aria-label="Search" 
+                                value={this.props.searchText} onChange={this._onSearchTextChanged}/>
                             <i className="fas fa-search text-white ml-3" aria-hidden="true"></i>
                         </div>
                     </form>
                 </div>
 
-                <a className="navbar-brand">Beer Finder 9000</a>
+                <h1 className="text-white">Beer Finder 9000</h1>>
 
             </nav>
         )
