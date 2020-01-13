@@ -1,6 +1,7 @@
 import React from 'react';
 import Brewery from '../models/Brewery'
 import { RouteComponentProps, withRouter } from "react-router";
+import "./BreweryListItem.scss"
 
 interface UrlParams {
     id: string;
@@ -23,6 +24,7 @@ class BreweryListItemComponent extends React.Component<Props> {
         return (
             <li className={`list-group-item list-group-item-action" ${isSelected ? "active" : ""}`} onClick={this.goToBrewery}>
                 <h5>{brewery.name}</h5>
+                <small>Style: {brewery.brewery_type}</small>
                 <div>{brewery.city}, {brewery.state}</div>
             </li>
         )
