@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Visit the site! [Beer Finder 9000](https://beer-finder-9000.herokuapp.com/)
 
 ## Available Scripts
 
