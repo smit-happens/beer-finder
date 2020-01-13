@@ -6,7 +6,7 @@ import "./App.scss";
 
 
 class App extends React.Component { 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className="bg">
         <Router>

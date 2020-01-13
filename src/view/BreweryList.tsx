@@ -1,7 +1,6 @@
 import React from 'react';
 import BreweryListItem from "./BreweryListItem";
 import Brewery from '../models/Brewery';
-// import { BreweryApi } from '../models/BreweryApi';
 import "./BreweryList.scss";
 
 
@@ -21,7 +20,6 @@ public render(): JSX.Element {
         );
 
         return (
-
             <div className="container-fluid brewery-list">
                 <ul className="list-group">
                 {listItems}
